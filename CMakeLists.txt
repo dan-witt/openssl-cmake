@@ -332,6 +332,13 @@ else()
     add_custom_target(openssl-build DEPENDS ${OPENSSL_BUILD_OUTPUT})
 endif()
 
+add_custom_command(OUTPUT copy_to_dist
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_SOURCE_DIR}/dist/OpenSSL/${OPENSSL_TARGET_VERSION}/lib/${OPENSSL_OUTPUT_ARCH}
+    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/_deps/openssl-source-build/*.a ${CMAKE_SOURCE_DIR}/dist/OpenSSL/${OPENSSL_TARGET_VERSION}/lib/${OPENSSL_OUTPUT_ARCH}
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_BINARY_DIR}/_deps/openssl-source-build/include ${CMAKE_SOURCE_DIR}/dist/OpenSSL/${OPENSSL_TARGET_VERSION}/include
+    COMMENT "Copying OpenSSL artifact to distribution directory"
+)
+
 add_dependencies(OpenSSL::Crypto openssl-build)
 add_dependencies(OpenSSL::SSL openssl-build)
 
@@ -376,3 +383,6 @@ if(OPENSSL_INSTALL_CERT)
     # https://curl.se/docs/caextract.html
     install(CODE "file(DOWNLOAD https://curl.se/ca/cacert.pem ${OPENSSL_OPENSSLDIR}/cert.pem)")
 endif()
+
+add_custom_target(dist ALL DEPENDS copy_to_dist openssl-build)
+

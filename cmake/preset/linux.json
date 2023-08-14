@@ -11,7 +11,10 @@
                 "target-linux",
                 "ninja",
                 "default"
-            ]
+            ],
+        "cacheVariables": {
+            "OPENSSL_OUTPUT_ARCH":"linux"
+        }
         }
     ],
     "buildPresets": [

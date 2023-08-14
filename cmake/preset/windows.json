@@ -11,7 +11,10 @@
                 "target-windows",
                 "vs2022",
                 "default"
-            ]
+            ],
+            "cacheVariables": {
+                "OPENSSL_OUTPUT_ARCH":"windows"
+            }
         }
     ],
     "buildPresets": [

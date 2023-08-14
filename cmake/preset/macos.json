@@ -11,7 +11,10 @@
                 "target-macos",
                 "xcode",
                 "default"
-            ]
+            ],
+            "cacheVariables": {
+                "OPENSSL_OUTPUT_ARCH":"macos"
+            }
         }
     ],
     "buildPresets": [

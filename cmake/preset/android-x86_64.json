@@ -13,7 +13,8 @@
                 "default"
             ],
             "cacheVariables": {
-                "ANDROID_ABI": "x86_64"
+                "ANDROID_ABI": "x86_64",
+                "OPENSSL_OUTPUT_ARCH":"android-x86_64"
             }
         }
     ],

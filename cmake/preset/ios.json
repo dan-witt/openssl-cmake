@@ -11,7 +11,10 @@
                 "target-ios",
                 "xcode",
                 "default"
-            ]
+            ],
+            "cacheVariables": {
+                "OPENSSL_OUTPUT_ARCH":"ios"
+            }
         },
         {
             "name": "ios_sim",
@@ -20,7 +23,10 @@
                 "target-ios_sim",
                 "xcode",
                 "default"
-            ]
+            ],
+            "cacheVariables": {
+                "OPENSSL_OUTPUT_ARCH":"ios_sim"
+            }
         }
     ],
     "buildPresets": [
