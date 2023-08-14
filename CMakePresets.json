@@ -9,6 +9,10 @@
         "cmake/preset/macos.json",
         "cmake/preset/windows.json",
         "cmake/preset/ios.json",
-        "cmake/preset/android.json"
+        "cmake/preset/android.json",
+        "cmake/preset/android-arm.json",
+        "cmake/preset/android-arm64.json",
+        "cmake/preset/android-x86.json",
+        "cmake/preset/android-x86_64.json"
     ]
 }

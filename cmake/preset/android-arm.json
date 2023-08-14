@@ -1,0 +1,45 @@
+{
+    "version": 5,
+    "include": [
+        "base.json"
+    ],
+    "configurePresets": [
+        {
+            "name": "android-arm",
+            "inherits": [
+                "host-not-windows",
+                "target-android",
+                "ninja",
+                "default"
+            ],
+            "cacheVariables": {
+                "ANDROID_ABI": "armeabi-v7a"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "android-arm",
+            "configurePreset": "android-arm",
+            "inherits": [
+                "host-not-windows"
+            ]
+        },
+        {
+            "name": "android-arm-clean",
+            "configurePreset": "android-arm",
+            "inherits": [
+                "host-not-windows",
+                "clean"
+            ]
+        },
+        {
+            "name": "android-arm-install",
+            "configurePreset": "android-arm",
+            "inherits": [
+                "host-not-windows",
+                "install"
+            ]
+        }
+    ]
+}

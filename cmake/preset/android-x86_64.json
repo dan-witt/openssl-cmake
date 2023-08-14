@@ -1,0 +1,45 @@
+{
+    "version": 5,
+    "include": [
+        "base.json"
+    ],
+    "configurePresets": [
+        {
+            "name": "android-x86_64",
+            "inherits": [
+                "host-not-windows",
+                "target-android",
+                "ninja",
+                "default"
+            ],
+            "cacheVariables": {
+                "ANDROID_ABI": "x86_64"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "android-x86_64",
+            "configurePreset": "android-x86_64",
+            "inherits": [
+                "host-not-windows"
+            ]
+        },
+        {
+            "name": "android-x86_64-clean",
+            "configurePreset": "android-x86_64",
+            "inherits": [
+                "host-not-windows",
+                "clean"
+            ]
+        },
+        {
+            "name": "android-x86_64-install",
+            "configurePreset": "android-x86_64",
+            "inherits": [
+                "host-not-windows",
+                "install"
+            ]
+        }
+    ]
+}
