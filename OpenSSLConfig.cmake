@@ -28,6 +28,6 @@ target_include_directories(OpenSSL::SSL  INTERFACE ${OPENSSL_INCLUDE_DIRS})
 
 add_library(OpenSSL::Crypto STATIC IMPORTED)
 set_target_properties(OpenSSL::Crypto PROPERTIES IMPORTED_LOCATION "${OPENSSL_CRYPTO_LIBRARIES}")
-target_include_directories(iOpenSSL::Crypto INTERFACE ${OPENSSL_INCLUDE_DIRS})
+target_include_directories(OpenSSL::Crypto INTERFACE ${OPENSSL_INCLUDE_DIRS})
 
-
+set(OpenSSL_FOUND TRUE)
