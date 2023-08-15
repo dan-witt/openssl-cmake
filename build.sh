@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 #if ANDROID_NDK not set look in ANDROID_NDK search paths and set it to the highest version
 
@@ -15,6 +16,10 @@ if [ "$ANDROID_NDK" == "" ]; then
         fi
     done
 fi
+if [ "$ANDROID_NDK" == "" ]; then
+    echo "Error: ANDROID_NDK not set and not found in search paths."
+    exit 1
+fi
 
 archs=('android-arm' 'android-arm64' 'android-x86_64' 'android-x86' 'linux')
 
@@ -22,3 +27,9 @@ for arch in "${archs[@]}"; do
     cmake --preset $arch
     cmake --build --preset $arch
 done
+
+(
+  cd build/linux
+  cmake --build . --target create_archive
+)
+
