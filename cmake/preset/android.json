@@ -14,7 +14,7 @@
             ],
             "cacheVariables": {
                 "ANDROID_ABI": "armeabi-v7a",
-                "OPENSSL_OUTPUT_ARCH":"android-armeabi-v7a"
+                "OPENSSL_OUTPUT_ARCH":"armeabi-v7a"
             }
         }
     ],

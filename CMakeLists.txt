@@ -378,6 +378,14 @@ if(OPENSSL_INSTALL_CERT)
 endif()
 
 
+execute_process(
+    COMMAND bash -c "basename $(ls -td ${CMAKE_SOURCE_DIR}/build/.cache/openssl-source/*/ | head -n 1)"
+    OUTPUT_VARIABLE CPM_HASH
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+message("Hash of the most recently created directory: ${CPM_HASH}")
+
 add_custom_command(OUTPUT copy_to_dist
     COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_SOURCE_DIR}/dist/OpenSSL/lib/${OPENSSL_OUTPUT_ARCH}
     COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/_deps/openssl-source-build/*.a ${CMAKE_SOURCE_DIR}/dist/OpenSSL/lib/${OPENSSL_OUTPUT_ARCH}
@@ -385,6 +393,7 @@ add_custom_command(OUTPUT copy_to_dist
 	
     COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/OpenSSLConfig.cmake ${CMAKE_SOURCE_DIR}/dist/OpenSSL
     COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/FindOpenSSL.cmake ${CMAKE_SOURCE_DIR}/dist/OpenSSL
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/build/.cache/openssl-source/${CPM_HASH}/include ${CMAKE_SOURCE_DIR}/dist/OpenSSL/include
     COMMENT "Copying OpenSSL artifact to distribution directory"
 )
 add_custom_target(dist ALL DEPENDS copy_to_dist openssl-build)
