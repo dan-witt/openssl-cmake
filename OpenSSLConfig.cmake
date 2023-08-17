@@ -13,7 +13,14 @@ if(DEFINED ANDROID_ABI)
 	  set(OPENSSL_ARCH ${ANDROID_ABI})
   endif()
 else()
-	set(OPENSSL_ARCH ${CMAKE_SYSTEM_PROCESSOR})
+    execute_process(
+      COMMAND ${CMAKE_C_COMPILER} -dumpmachine
+      OUTPUT_VARIABLE OPENSSL_ARCH
+      RESULT_VARIABLE RESULT
+    )
+    if(RESULT)
+      message(FATAL_ERROR "Failed to determine the target triplet using -dumpmachine!")
+    endif()      
 endif()
 
 # Set the include and library paths.

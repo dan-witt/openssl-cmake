@@ -385,6 +385,19 @@ execute_process(
 )
 
 message("Hash of the most recently created directory: ${CPM_HASH}")
+execute_process(
+  COMMAND ${CMAKE_C_COMPILER} -dumpmachine
+  OUTPUT_VARIABLE TARGET_TRIPLET
+  OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+message(STATUS "Target triplet: ${TARGET_TRIPLET}")
+if(NOT DEFINED ANDROID_ABI)
+    execute_process(
+      COMMAND ${CMAKE_C_COMPILER} -dumpmachine
+      OUTPUT_VARIABLE OPENSSL_OUTPUT_ARCH
+      OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
+endif()
 
 add_custom_command(OUTPUT copy_to_dist
     COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_SOURCE_DIR}/dist/OpenSSL/lib/${OPENSSL_OUTPUT_ARCH}
