@@ -16,6 +16,7 @@ else()
     execute_process(
       COMMAND ${CMAKE_C_COMPILER} -dumpmachine
       OUTPUT_VARIABLE OPENSSL_ARCH
+      OUTPUT_STRIP_TRAILING_WHITESPACE
       RESULT_VARIABLE RESULT
     )
     if(RESULT)
