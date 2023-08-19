@@ -7,6 +7,7 @@ project(
     HOMEPAGE_URL "https://github.com/jimmy-park/openssl-cmake"
     LANGUAGES C
 )
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE NEVER)

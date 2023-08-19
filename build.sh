@@ -25,7 +25,7 @@ archs=('android-arm' 'android-arm64' 'android-x86_64' 'android-x86' 'linux')
 
 for arch in "${archs[@]}"; do
     cmake --preset $arch
-    cmake --build --preset $arch
+    cmake --build --preset $arch --verbose
 done
 
 (
