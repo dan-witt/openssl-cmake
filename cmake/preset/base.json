@@ -56,8 +56,9 @@
             "cacheVariables": {
                 "ANDROID_NDK": "$env{ANDROID_NDK}",
                 "ANDROID_PLATFORM": "android-22",
+		"CMAKE_ANDROID_API":"22",
                 "ANDROID_USE_LEGACY_TOOLCHAIN_FILE": false,
-                "OPENSSL_CONFIGURE_OPTIONS": "--openssldir=/system/etc/security/cacerts no-ui no-stdio",
+                "OPENSSL_CONFIGURE_OPTIONS": "--openssldir=/system/etc/security/cacerts;no-ui;no-stdio",
                 "OPENSSL_PATCH": "${sourceDir}/patch/android.patch"
             }
         },
